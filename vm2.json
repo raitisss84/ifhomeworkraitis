@@ -11,11 +11,7 @@
     },
     "adminPassword": {
       "type": "securestring"
-      "reference": {
-            "keyVault": {
-            "id": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.KeyVault/vaults/<vault-name>"
-            },
-            "secretName": "ExamplePassword
+      
     },
     "dnsLabelPrefix": {
       "type": "string",
