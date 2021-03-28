@@ -17,6 +17,7 @@
       },
       "dnsLabelPrefix": {
         "type": "string",
+        "defaultValue": "ifraitisdns.eastus.cloudapp.azure.com",
         "metadata": {
           "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
         }
@@ -51,7 +52,7 @@
       "privateIP":  "10.0.0.4",
       "storageAccountType": "Standard_LRS",
       "publicIPAddressName": "myPublicIP",
-      "publicIPAddressType": "Dynamic",
+      "publicIPAddressType": "Static",
       "vmStorageAccountContainerName": "vhds",
       "vmName": "SimpleWindowsVM",
       "vmSize": "Standard_B2s",
@@ -59,7 +60,8 @@
       "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
       "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
       "apiVersion": "2015-06-15",
-      "mx": "raitisIFvm.mail.protection.outlook.com"
+      "mx": "raitisIFvm.mail.protection.outlook.com",
+      "ttl": "3600"
     },
     "resources": [
       {
@@ -131,14 +133,14 @@
                         "[variables('dnsservers')]"
                     ]
                 } 
-                
+        }        
       },
     {
     "name": "PrivateDNS",
-    "type": "Microsoft.Network/privateDnsZones/MX",
-    "apiVersion": "2020-06-01",
+    "type": "Microsoft.Network/privateDnsZones",
+    "apiVersion": "[variables('apiVersion')]",
     "properties": {
-        "ttl": "3600",
+        "ttl": "[variables('ttl')]",
         "mxRecords": [
         {
         "preference": "1",
@@ -215,5 +217,5 @@
           }
         }
       }
-    ]
-  }
+   ]
+ }

@@ -12,24 +12,6 @@
                 },
                 "secretName": "IFvmAdminPassword"
               }
-        },
-        "dnsLabelPrefix": {
-            "value": ""
-        },
-        "windowsOSVersion": {
-            "value": "2019-Datacenter-core"
-        },
-        "dnsZoneName": {
-            "value": "raitisIFvmDNSzone",
-            "metadata": {
-              "description": "Name of the DNS Zone."
-            }
-          },
-          "ttl": {
-            "value": "3600",
-            "metadata": {
-              "description": "Time to live value, in seconds."
-            }
-          }
+        }
     }
 }
