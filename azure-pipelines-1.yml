@@ -1,0 +1,25 @@
+name: $(BuildDefinitionName)_$(date:yyyyMMdd)$(rev:.r)
+ 
+trigger: none
+ 
+pr: none
+ 
+stages :        
+  - stage: arm_template_deploy
+    jobs:
+      - job: arm_template_deploy
+        steps:
+              - checkout: self
+ 
+              - task: AzureResourceManagerTemplateDeployment@3
+                inputs:
+                  deploymentScope: 'Resource Group'
+                  azureResourceManagerConnection: 'raitisIFhomeworkServiceConnection'
+                  subscriptionId: '6399faa0-0d26-483a-a22d-cbff09c43a0c'
+                  action: 'Create Or Update Resource Group'
+                  resourceGroupName: 'raitisIFresgr'
+                  location: 'eastus'
+                  templateLocation: 'Linked artifact'
+                  csmFile: 'https://github.com/raitisss84/ifhomeworkraitis/blob/76745737c8c790b265e86377d1c3b869d7d31225/rDNSvm.json'
+                  csmParametersFile: 'https://github.com/raitisss84/ifhomeworkraitis/blob/76745737c8c790b265e86377d1c3b869d7d31225/rDNSvm.parameters.json'
+                  deploymentMode: 'Incremental'
