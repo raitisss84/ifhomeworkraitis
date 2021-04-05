@@ -1,0 +1,20 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "adminUsername": {
+        "value": null,
+      "metadata": {
+        "description": "Admin username"
+      }
+      },
+      "adminPassword": {
+        "reference": {
+            "keyVault": {
+            "id": "/subscriptions/6399faa0-0d26-483a-a22d-cbff09c43a0c/resourceGroups/raitisIFresgr/providers/Microsoft.KeyVault/vaults/raitisIFkv"
+            },
+            "secretName": "IFvmAdminPassword"
+          }
+      }
+    }
+  }
